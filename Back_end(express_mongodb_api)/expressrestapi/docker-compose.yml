@@ -1,0 +1,21 @@
+version: "3"
+#detail des containers
+services:
+  app:
+    container_name: app
+    #cas de panne
+    restart: always
+    #excuter dockerfile (notre propre image)
+    build: .
+    ports:
+      - "3000:3000"
+    #service liée au s "mongo"
+    links:
+      - mongo 
+  mongo:
+    container_name: mongo
+    #l'image mongo de (docker hub) 
+    image: mongo
+    ports:
+      - "27017:27017"
+    

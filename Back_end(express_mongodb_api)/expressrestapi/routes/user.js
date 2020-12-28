@@ -2,17 +2,17 @@ import { Router } from 'express';
 //import models from './../models';
 const router = Router();
 
-/*router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   const users = await req.context.models.User.find();
   return res.send(users);
-});*/
+});
  
-/*router.get('/:userId', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   const user = await req.context.models.User.findById(
     req.params.userId,
   );
   return res.send(user);
-});*/
+});
 
 router.post('/', async (req, res, next) => {
   const user = await req.context.models.User.create({
@@ -25,7 +25,7 @@ router.post('/', async (req, res, next) => {
   return res.send(user);
 });
 
-/*router.post('/login', async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
 //middleware for determination request sender ????  : i think enregestrate the user like session or ...
 
   console.log("two");
@@ -36,5 +36,5 @@ router.post('/', async (req, res, next) => {
   };
   next();
 
-});*/
+});
 export default router;
