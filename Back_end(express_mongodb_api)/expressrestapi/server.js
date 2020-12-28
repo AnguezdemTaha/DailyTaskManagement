@@ -45,6 +45,7 @@ app.use((error, req, res, next) => {
 });
 
 
+
 //re-initialize your database on every Express server start,
 const eraseDatabaseOnSync = true;
 
@@ -64,6 +65,10 @@ app.listen(process.env.PORT, () =>
 );
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4ade6757fb4f27b29ba4664380c6a0c7ad1abc01
 const createUsersWithMessages = async () => {
   const user1 = new models.User({
     username: 'test',
@@ -78,17 +83,17 @@ const createUsersWithMessages = async () => {
   });
  
   const task1 = new models.Task({
-    discription: 'Published the Road to learn React',
+    discription: 'task test1',
     user: user1.id,
   });
  
   const task2 = new models.Task({
-    discription: 'Happy to release ...',
+    discription: 'task test 2 ...',
     user: user2.id,
   });
  
   const task3 = new models.Task({
-    discription: 'Published a complete ...',
+    discription: 'task test 3 ...',
     user: user2.id,
   });
 
