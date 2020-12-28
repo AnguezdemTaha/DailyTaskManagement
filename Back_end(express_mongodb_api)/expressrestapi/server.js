@@ -63,6 +63,7 @@ app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`),
 );
 });
+
 const createUsersWithMessages = async () => {
   const user1 = new models.User({
     username: 'test',
@@ -90,6 +91,27 @@ const createUsersWithMessages = async () => {
     discription: 'Published a complete ...',
     user: user2.id,
   });
+
+  //to do :
+  /*const domain = new models.Task({
+    discription: 'Published a complete ...',
+    user: user2.id,
+  });
+
+  const task3 = new models.Task({
+    discription: 'Published a complete ...',
+    user: user2.id,
+  });
+
+  const task3 = new models.Task({
+    discription: 'Published a complete ...',
+    user: user2.id,
+  });
+
+  const task3 = new models.Task({
+    discription: 'Published a complete ...',
+    user: user2.id,
+  });*/
  
   await task1.save();
   await task2.save();

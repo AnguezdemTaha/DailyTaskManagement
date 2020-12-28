@@ -2,18 +2,21 @@ import { Router } from 'express';
 //import models from './../models';
 const router = Router();
 
-/*router.get('/', async (req, res) => {
+//get all users
+router.get('/', async (req, res) => {
   const users = await req.context.models.User.find();
   return res.send(users);
-});*/
+});
  
-/*router.get('/:userId', async (req, res) => {
+//get one user
+router.get('/:userId', async (req, res) => {
   const user = await req.context.models.User.findById(
     req.params.userId,
   );
   return res.send(user);
-});*/
+});
 
+//update user
 router.post('/', async (req, res, next) => {
   const user = await req.context.models.User.create({
     username: req.body.username,
@@ -25,16 +28,30 @@ router.post('/', async (req, res, next) => {
   return res.send(user);
 });
 
-/*router.post('/login', async (req, res, next) => {
+//login
+router.post('/login', async (req, res, next) => {
 //middleware for determination request sender ????  : i think enregestrate the user like session or ...
 
   console.log("two");
   req.context = {
     models,
     //me: models.users[1],
-    me: await models.User.findByLogin(req.body.username,req.body.password),
+    me: await models.User.findByLogin(req.body.username,req.body.password), // call hte foncution
   };
   next();
 
-});*/
+});
+
+//delete user
+router.delete('/:userId', async (req, res) => {
+  const user = await req.context.models.User.findById(
+    req.params.userId,
+  );
+ 
+  if (user) {
+    await user.remove();
+  }
+ 
+  return res.send(user);
+});
 export default router;

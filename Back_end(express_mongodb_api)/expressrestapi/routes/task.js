@@ -4,11 +4,14 @@ import { Router } from 'express';
 import { BadRequestError } from '../utils/errors';
 const router = Router();
  
-router.get('/', async (req, res) => {
+
+//all tasks for a specific user + (user and domain) : to do
+/*router.get('/', async (req, res) => {
   const tasks = await req.context.models.Task.find();
   return res.send(tasks);
-});
+});*/
  
+//on task
 router.get('/:taskId', async (req, res) => {
   const task = await req.context.models.Task.findById(
     req.params.taskId,
@@ -16,6 +19,7 @@ router.get('/:taskId', async (req, res) => {
   return res.send(task);
 });
  
+//update create task
 router.post('/', async (req, res, next) => {
   const task = await req.context.models.Task.create({
     discription: req.body.discription,
@@ -27,16 +31,17 @@ router.post('/', async (req, res, next) => {
   return res.send(task);
 });
  
+//delete task
 router.delete('/:taskId', async (req, res) => {
   const task = await req.context.models.Task.findById(
-    req.params.messageId,
+    req.params.taskId,
   );
  
   if (task) {
     await task.remove();
   }
  
-  return res.send(message);
+  return res.send(task);
 });
  
 export default router;
