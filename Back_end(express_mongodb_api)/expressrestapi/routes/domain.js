@@ -17,6 +17,15 @@ router.get('/:domainId', async (req, res) => {
   );
   return res.send(domain);
 });
+
+//list of domains of user
+router.get('/:userId', async (req, res) => {
+  const domains = await req.context.models.Domain.find({
+    user: req.params.userId
+  }
+  );
+  return res.send(domains);
+});
  
 //updata domain
 router.post('/', async (req, res, next) => {

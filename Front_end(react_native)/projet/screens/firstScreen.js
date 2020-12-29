@@ -1,3 +1,4 @@
+//back comment 
 import React from 'react';
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput} from 'react-native';
 
