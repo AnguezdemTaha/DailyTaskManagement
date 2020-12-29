@@ -1,5 +1,6 @@
 //back comment 
 import React from 'react';
+import {TouchableHighlight}from 'react-native';
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput} from 'react-native';
 
 //DD
