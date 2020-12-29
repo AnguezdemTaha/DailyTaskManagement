@@ -1,5 +1,5 @@
 //back comment 
-import React from 'react';
+import React from 'react ijijijzeaiohazeihzoeahzoe^tzaet^h';
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput} from 'react-native';
 
 //DD
