@@ -1,6 +1,9 @@
 import routes from './routes';
 import 'dotenv/config';
 import models, { connectDb } from './models';
+
+const session = require('express-session');
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -9,6 +12,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//session test
+//app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+//var sess;
 
 //middleware for determination request sender ????  : i think enregestrate the user like session or ...
 app.use(async (req, res, next) => {
@@ -65,10 +71,7 @@ app.listen(process.env.PORT, () =>
 );
 });
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 4ade6757fb4f27b29ba4664380c6a0c7ad1abc01
 const createUsersWithMessages = async () => {
   const user1 = new models.User({
     username: 'test',

@@ -6,10 +6,15 @@ const router = Router();
  
 
 //all tasks for a specific user + (user and domain) : to do
-/*router.get('/', async (req, res) => {
+//all tasks
+router.get('/', async (req, res) => {
   const tasks = await req.context.models.Task.find();
-  return res.send(tasks);
-});*/
+  //session test
+  //const sess=req.session;
+  //if(sess.email) {
+    return res.send(tasks);
+  //}
+});
  
 //on task
 router.get('/:taskId', async (req, res) => {
@@ -19,6 +24,25 @@ router.get('/:taskId', async (req, res) => {
   return res.send(task);
 });
  
+
+//list of taches of user
+router.get('/user/:userId', async (req, res) => {
+  const tasks = await req.context.models.Task.find({
+    user: req.params.userId
+  }
+  );
+  return res.send(tasks);
+});
+
+//list of taches of domain( ofc a docim is specific to a user)
+router.get('/domain/:domainId', async (req, res) => {
+  const tasks = await req.context.models.Task.find({
+    domain: req.params.domainId
+  }
+  );
+  return res.send(tasks);
+});
+
 //update create task
 router.post('/', async (req, res, next) => {
   const task = await req.context.models.Task.create({
@@ -43,5 +67,6 @@ router.delete('/:taskId', async (req, res) => {
  
   return res.send(task);
 });
+//fct : end task
  
 export default router;

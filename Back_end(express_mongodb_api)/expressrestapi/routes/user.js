@@ -17,6 +17,11 @@ router.get('/:userId', async (req, res) => {
   const user = await req.context.models.User.findById(
     req.params.userId,
   );
+  //session test
+  const sess=req.session;
+  sess.email="test"; // equivalent to $_SESSION['email'] in PHP.
+  sess.username="test";
+  
   return res.send(user);
 });
 
@@ -61,5 +66,14 @@ router.delete('/:userId', async (req, res) => {
  
   return res.send(user);
 });
+
+
+//list of domains of user
+router.get('/:userId', async (req, res) => {
+  const users = await req.context.models.User.find();
+  return res.send(users);
+});
+
+
 
 export default router;

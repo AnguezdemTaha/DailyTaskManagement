@@ -9,19 +9,21 @@ router.get('/:evaluationId', async (req, res) => {
   const evaluation = await req.context.models.Evaluation.findById(
     req.params.evaluationId,
   );
-  return res.send(domain);
+  return res.send(evaluation);
 });
  
 //update create evaluation if the time < ....  : a faire
 router.post('/', async (req, res, next) => {
   const evaluation = await req.context.models.Evaluation.create({
+    //add condition : if time <endtime ....
     discription: req.body.discription,
     user: req.context.me.id,
+    //task: req.context.me.id,
   
   }).catch((error) => next(new BadRequestError(error)));
   
  
-  return res.send(domain);
+  return res.send(evaluation);
 });
  
 //delete evaluation
