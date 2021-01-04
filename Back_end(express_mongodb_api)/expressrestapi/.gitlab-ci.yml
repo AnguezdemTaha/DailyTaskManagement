@@ -1,0 +1,31 @@
+# pas encore remplit ++
+image: node:latest
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - echo "supposant quelque chose (commands pour builder notre application)"
+
+test-helloWorld:
+  stage: test
+  script:
+    - npm install
+    - npm test
+  tags:
+    - docker
+
+
+deploy-prod:
+  stage: deploy
+  script:
+    - echo "supposant on a fait la phase de deployement "
+    - sleep 20
