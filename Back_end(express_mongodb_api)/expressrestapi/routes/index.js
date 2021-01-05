@@ -1,9 +1,14 @@
 import session from './session';
 import user from './user';
-import task from './task';
+import objective from './objective';
+import categorie from './categorie';
+import evaluation from './evaluation';
  
 export default {
   session,
   user,
-  task,
+  objective,
+  categorie,
+  evaluation
+  
 };

@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
  
 import User from './user';
-import Task from './task';
+import Objective from './objective';
 import Evaluation from './evaluation';
-import Domain from './domain';
+import Categorie from './categorie';
 
  
 const connectDb = () => {
   return mongoose.connect(process.env.DATABASE_URL);
 };
  
-const models = { User, Task, Domain, Evaluation};
+const models = { User, Objective, Categorie, Evaluation};
  
 export { connectDb };
  
