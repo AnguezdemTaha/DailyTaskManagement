@@ -1,6 +1,7 @@
 import { Router } from 'express';
 //import models from './../models';
 
+import { BadRequestError } from '../utils/errors';
 const router = Router();
 
 
