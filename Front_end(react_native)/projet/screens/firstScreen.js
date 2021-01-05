@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+import React from 'react';
+import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
+=======
 //back comment 
 import React from 'react ijijijzeaiohazeihzoeahzoe^tzaet^h';
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput} from 'react-native';
+>>>>>>> f83a6cdf55b2c514a161195bcdf89213bbc5fe43
 
-//DD
+//dd
 const firstScreen=props=>{ 
 
     
@@ -19,27 +24,30 @@ const firstScreen=props=>{
           </View>
         </View>
         <View style={{flex:0.55}}>
-          <View style={{flex:0.55,justifyContent:'center'}}>
-              <View style={{flex:0.55,justifyContent:'space-around'}}>
-            <View style={{flex:0.45,flexDirection:'row',justifyContent:"center"}}>
+          <KeyboardAvoidingView style={{flex:0.55,justifyContent:'center'}}>
+              <KeyboardAvoidingView style={{flex:0.55,justifyContent:'space-around'}}>
+            <View style={{flex:0.48,flexDirection:'row',justifyContent:"center"}}>
                 
-                <View style={{flex:0.7}}><TextInput placeholder="Username" placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5 ,borderBottomColor:"orange",color:"white",fontSize:15}} /></View>
+                <KeyboardAvoidingView style={{flex:0.7}}><TextInput placeholder="Username" placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5 ,borderBottomColor:"orange",color:"white",fontSize:15}} /></KeyboardAvoidingView>
             </View>
-            <View style={{flex:0.45,flexDirection:'row',justifyContent:"center"}}>
+            <View style={{flex:0.48,flexDirection:'row',justifyContent:"center"}}>
                 
-                <View style={{flex:0.7}}><TextInput secureTextEntry={true} placeholder="Password" placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5,borderBottomColor:'orange',color:"white",fontSize:15}} /></View>
+                <KeyboardAvoidingView style={{flex:0.7}}><TextInput secureTextEntry={true} placeholder="Password" placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5,borderBottomColor:'orange',color:"white",fontSize:15}} /></KeyboardAvoidingView>
             </View>
-          </View>
+          </KeyboardAvoidingView>
               
               
-          </View>
+          </KeyboardAvoidingView>
           <View style={{flex:0.18,justifyContent:'space-between'}}>
             <View style={{flex:0.9,flexDirection:'row',justifyContent:'center'}}>
+              
             <TouchableOpacity  onPress={()=>props.navigation.navigate('thirdScreen')}style={{flex:0.3,borderRadius:20,backgroundColor:'orange',justifyContent:'center',alignItems:'center'}}>
-              
+            <KeyboardAvoidingView>
+            
               <Text style={{color:'white',fontSize:22}}>Sign In</Text>
-              
+              </KeyboardAvoidingView>
               </TouchableOpacity>
+              
               
               </View>
               <TouchableOpacity onPress={()=>props.navigation.navigate('secondScreen')} style={{alignItems:'center'}}><Text style={{color:'white',fontSize:15}}>Sign up</Text></TouchableOpacity>

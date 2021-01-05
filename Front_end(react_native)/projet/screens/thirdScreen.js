@@ -1,56 +1,49 @@
 import React from 'react';
-import {View,Text,FlatList} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {View,Image,Text,FlatList,ImageBackground,TextInput,TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {DOMAINS} from '../data/dummydata';
 const thirdScreen=props=>{
-    const DATA = [
-        {
-          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-          title: 'Workout',
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-          title: 'Studies',
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-145571e29d72',
-          title: 'Business',
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-145571e29d76',
-          title: 'Teaching',
-        },
-        
-      ];
-      const renderItem = ({ item }) => (
+    
+      const renderItem = ( itemData ) => {
     
     
-        <TouchableOpacity style={{height:40,marginBottom:10,backgroundColor:'red',borderRadius:10,justifyContent:'center'}}><Text>{item.title}</Text></TouchableOpacity>
-    
-  );
+        return <TouchableOpacity onPress={()=>props.navigation.navigate('fourthScreen',{imagee:itemData.item.image,domainId:itemData.item.id})} style={{flex:1,margin:15,height:160,borderRadius:40,overflow:'hidden'}}>
+          <ImageBackground source={itemData.item.image} style={{height:'100%',width:'100%',justifyContent:'flex-end',alignItems:'center'}}>
+          <Text style={{color:'white',fontSize:30,textAlign:'center'}}>{itemData.item.title}</Text>
+          </ImageBackground>
+          </TouchableOpacity>;
+          
+      };
 
     return(
         <View style={{flex:1}}>
-            <LinearGradient style={{flex:1}} colors={[ 'rgba(255, 165, 0,0.5)',"rgba(255, 102, 0,0.8)"]}>
-                <View style={{flex:0.2,justifyContent:"center"}}>
-                  <Icon name="search" size={30} color="#900"/>
-                    <View style={{flex:0.5,flexDirection:'row'}}>
-                        <View style={{flex:0.6,justifyContent:'center',alignItems:'center'}}>
-                        <Text style={{fontSize:20,color:'gray'}}>First, chose a domain:</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={{flex:0.8}}>
+            <ImageBackground source={require('../assets/img.jpg')} style={{width:'100%',height:'100%'}}>
+            <View style={{ flex:0.136,justifyContent:'flex-end',marginBottom:10}}>
+                 <View style={{flex:0.55,flexDirection:'row'}}>
+                   <View style={{flex:0.15,alignItems:'center',justifyContent:'center'}}>
+                   <TouchableOpacity onPress={()=>console.log("hi")}>
+                   <Icon name="search"  size={30} style={{alignItems:'center'}} color="orange"/>
+                   </TouchableOpacity>
+                   </View>
+                   <View style={{flex:0.85}}>
+                   
+                   <TextInput placeholder="Look for a domain" placeholderTextColor='white' style={{flex:1,borderRadius:20}} backgroundColor='gray'/>
+                   
+                   </View>
+                 </View>
+                 </View>
+                 <View style={{flex:0.864,justifyContent:'space-around'}}>
+                   
                 <FlatList
-        data={DATA}
+        data={DOMAINS}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
-        
+        keyExtractor={(item,index) => item.id}
+        numColumns={2}
       />
 
                 </View>
-            </LinearGradient>
+            </ImageBackground>
 
         </View>
     )
