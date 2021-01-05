@@ -2,6 +2,12 @@ import { Router } from 'express';
 //import models from './../models';
 const router = Router();
 
+//test jasmine test
+
+router.get('/test', async (req, res) => {
+  //const users = await req.context.models.User.find();
+  return res.send("test");
+});
 
 //get all users
 
