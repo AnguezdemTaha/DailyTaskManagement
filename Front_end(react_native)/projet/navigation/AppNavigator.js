@@ -5,6 +5,7 @@ import { create } from "react-test-renderer";
 import firstScreen from "../screens/firstScreen";
 import secondScreen from "../screens/secondScreen";
 import thirdScreen from "../screens/thirdScreen";
+import fourthScreen from '../screens/fourthScreen';
 const myStack=createStackNavigator();
 const AppNavigator=props=>{
     return <NavigationContainer>
@@ -18,6 +19,7 @@ const AppNavigator=props=>{
             
             <myStack.Screen name="secondScreen" component={secondScreen}/>
             <myStack.Screen name="thirdScreen" component={thirdScreen}/>
+            <myStack.Screen name="fourthScreen" component={fourthScreen}/>
         </myStack.Navigator>
     </NavigationContainer>;
 }   
