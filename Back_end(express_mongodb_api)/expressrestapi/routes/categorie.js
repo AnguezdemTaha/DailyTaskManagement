@@ -20,7 +20,11 @@ router.get('/:categorieId', async (req, res) => {
 
 //list of domains of user
 router.get('/:userId', async (req, res) => {
+<<<<<<< HEAD
   const categories = await req.context.models.categorie.find({
+=======
+  const categories = await req.context.models.Categorie.find({
+>>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d
     user: req.params.userId
   }
   );
@@ -29,7 +33,11 @@ router.get('/:userId', async (req, res) => {
  
 //updata domain
 router.post('/', async (req, res, next) => {
+<<<<<<< HEAD
   const categorie = await req.context.models.categorie.create({
+=======
+  const categorie = await req.context.models.Categorie.create({
+>>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d
     discription: req.body.discription,
     user: req.context.me.id,
   

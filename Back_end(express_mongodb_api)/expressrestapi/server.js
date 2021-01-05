@@ -15,7 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 //session test
 //app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 //var sess;
-
+//session test
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+var sess;
 //middleware for determination request sender ????  : i think enregestrate the user like session or ...
 app.use(async (req, res, next) => {
   req.context = {
@@ -28,7 +30,11 @@ app.use(async (req, res, next) => {
 
 app.use('/session', routes.session);
 app.use('/users', routes.user);
+<<<<<<< HEAD
 app.use('/objectives', routes.objective);
+=======
+app.use('/objectifs', routes.objective);
+>>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d
 app.use('/categories', routes.categorie);
 app.use('/evaluations', routes.evaluation);
 

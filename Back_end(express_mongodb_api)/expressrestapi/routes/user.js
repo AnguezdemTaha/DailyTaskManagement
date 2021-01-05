@@ -1,7 +1,10 @@
 import { Router } from 'express';
 //import models from './../models';
 
+<<<<<<< HEAD
 import { BadRequestError } from '../utils/errors';
+=======
+>>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d
 const router = Router();
 
 

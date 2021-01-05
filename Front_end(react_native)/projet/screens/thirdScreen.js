@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Image,Text,FlatList,ImageBackground,TextInput,KeyboardAvoidingView,TouchableOpacity } from 'react-native';
+import {View,Image,Text,FlatList,ImageBackground,TextInput,TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {DOMAINS} from '../data/dummydata';

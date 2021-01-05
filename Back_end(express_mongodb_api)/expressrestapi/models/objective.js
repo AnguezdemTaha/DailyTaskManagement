@@ -26,7 +26,11 @@ const objectiveSchema = new mongoose.Schema(
   { timestamps: true },
 );
  
+<<<<<<< HEAD:Back_end(express_mongodb_api)/expressrestapi/models/objective.js
 const Objective = mongoose.model('objective', objectiveSchema);
+=======
+const Objective = mongoose.model('Objective', objectiveSchema);
+>>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d:Back_end(express_mongodb_api)/expressrestapi/models/task.js
  
 export default Objective;
 
