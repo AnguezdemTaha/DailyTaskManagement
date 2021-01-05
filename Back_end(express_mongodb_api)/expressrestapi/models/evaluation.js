@@ -12,7 +12,7 @@ const evaluationSchema = new mongoose.Schema(
         //required: true,
       },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },//the user who done the evaluation
-    task: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' },//th task which the evaluation is done
+    objective: { type: mongoose.Schema.Types.ObjectId, ref: 'Objective' },//th task which the evaluation is done
   },
   { timestamps: true },
 );

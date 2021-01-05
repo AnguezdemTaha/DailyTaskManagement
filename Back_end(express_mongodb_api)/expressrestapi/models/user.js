@@ -40,7 +40,7 @@ userSchema.statics.findByLogin = async function (emailOrName, pass) {
 
 //we add a pre hook to our user schema to remove all messages of this user on its deletiondeleting his msgs when the user is deleted
 userSchema.pre('remove', function(next) {
-    this.model('Task').deleteMany({ user: this._id }, next);
+    this.model('Objective').deleteMany({ user: this._id }, next);
   });
 
 const User = mongoose.model('User', userSchema);

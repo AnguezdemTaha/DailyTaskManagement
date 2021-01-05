@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
  
-const domainSchema = new mongoose.Schema(
+const categorieSchema = new mongoose.Schema(
   {
     //text
     discription: {
@@ -13,7 +13,7 @@ const domainSchema = new mongoose.Schema(
   { timestamps: true },
 );
  
-const Domain = mongoose.model('Domain', domainSchema);
+const Categorie = mongoose.model('Categorie', categorieSchema);
  
-export default Domain;
+export default Categorie;
 
