@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 import React from 'react';
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
-=======
-//back comment 
-import React from 'react ijijijzeaiohazeihzoeahzoe^tzaet^h';
-import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput} from 'react-native';
->>>>>>> f83a6cdf55b2c514a161195bcdf89213bbc5fe43
 
 //dd
 const firstScreen=props=>{ 

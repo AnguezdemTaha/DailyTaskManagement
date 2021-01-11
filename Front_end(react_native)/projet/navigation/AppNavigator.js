@@ -6,6 +6,7 @@ import firstScreen from "../screens/firstScreen";
 import secondScreen from "../screens/secondScreen";
 import thirdScreen from "../screens/thirdScreen";
 import fourthScreen from '../screens/fourthScreen';
+import settings from '../screens/settings';
 const myStack=createStackNavigator();
 const AppNavigator=props=>{
     return <NavigationContainer>
@@ -19,6 +20,7 @@ const AppNavigator=props=>{
             
             <myStack.Screen name="secondScreen" component={secondScreen}/>
             <myStack.Screen name="thirdScreen" component={thirdScreen}/>
+            <myStack.Screen name="settings" component={settings}/>
             <myStack.Screen name="fourthScreen" component={fourthScreen}/>
         </myStack.Navigator>
     </NavigationContainer>;
