@@ -15,7 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 //session test
 //app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 //var sess;
-
+//session test
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+var sess;
 //middleware for determination request sender ????  : i think enregestrate the user like session or ...
 app.use(async (req, res, next) => {
   req.context = {
@@ -28,7 +30,9 @@ app.use(async (req, res, next) => {
 
 app.use('/session', routes.session);
 app.use('/users', routes.user);
-app.use('/tasks', routes.task);
+app.use('/objectifs', routes.objective);
+app.use('/categories', routes.categorie);
+app.use('/evaluations', routes.evaluation);
 
 //not matched routes
 app.get('*', function (req, res, next) {
@@ -60,7 +64,7 @@ connectDb().then(async () => {
   if (eraseDatabaseOnSync) {
     await Promise.all([
       models.User.deleteMany({}),
-      models.Task.deleteMany({}),
+      models.Objective.deleteMany({}),
     ]);
   }
 
@@ -85,17 +89,17 @@ const createUsersWithMessages = async () => {
     password : 'test2',
   });
  
-  const task1 = new models.Task({
+  const task1 = new models.Objective({
     discription: 'task test1',
     user: user1.id,
   });
  
-  const task2 = new models.Task({
+  const task2 = new models.Objective({
     discription: 'task test 2 ...',
     user: user2.id,
   });
  
-  const task3 = new models.Task({
+  const task3 = new models.Objective({
     discription: 'task test 3 ...',
     user: user2.id,
   });

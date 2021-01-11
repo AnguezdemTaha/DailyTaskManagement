@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
  
-const taskSchema = new mongoose.Schema(
+const objectiveSchema = new mongoose.Schema(
   {
     //text
     discription: {
@@ -20,13 +20,13 @@ const taskSchema = new mongoose.Schema(
       //required: true,
     },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },//associate task with user(one to many)
-    domain: { type: mongoose.Schema.Types.ObjectId, ref: 'Domain' },//associate task with domain(one to many)
+    categorie: { type: mongoose.Schema.Types.ObjectId, ref: 'Categorie' },//associate task with domain(one to many)
     evaluation: { type: mongoose.Schema.Types.ObjectId, ref: 'Evaluation' },
   },
   { timestamps: true },
 );
  
-const Task = mongoose.model('Task', taskSchema);
+const Objective = mongoose.model('Objective', objectiveSchema);
  
-export default Task;
+export default Objective;
 
