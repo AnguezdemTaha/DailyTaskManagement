@@ -1,5 +1,8 @@
 
+
 import React, { Component } from 'react';
+import React from 'react';
+
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
 
 import axios from 'axios';
