@@ -25,7 +25,38 @@ router.post('/', async (req, res, next) => {
  
   return res.send(evaluation);
 });
- 
+
+//evaluer objective =create + affect :: we can add that only 1 evaluation is possible or depending on the date end  ...
+router.put('/:id', async (req, res, next) => { ///id of the objective
+  //adding the evaluation first
+  const evaluation1 = await req.context.models.Evaluation.create({
+    //add condition : if time <endtime ....
+    discription: req.body.discription,
+    note: req.body.note,
+    //task: req.context.me.id,
+  
+  }).catch((error) => next(new BadRequestError(error)));
+  //affect evaluation to objective
+  req.context.models.Objective.updateOne({_id: req.params.id}, {
+    
+    //id §§!!
+    evaluation: evaluation1._id,
+    
+    }).then(
+    () => {
+      res.status(201).json({
+        message: 'Thing updated successfully!'
+      });
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json({
+        error: error
+      });
+    }
+  );
+});
+
 //delete evaluation
 router.delete('/:evaluationId', async (req, res) => {
   const evaluation = await req.context.models.Evaluation.findById(

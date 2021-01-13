@@ -11,8 +11,9 @@ const evaluationSchema = new mongoose.Schema(
         type: Number, //i think it is (to look) : we nneed type list
         //required: true,
       },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },//the user who done the evaluation
-    objective: { type: mongoose.Schema.Types.ObjectId, ref: 'Objective' },//th task which the evaluation is done
+    //user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },//the user who done the evaluation
+    //on va le faire lorsque on a plusieur evaluation pour le meme objective
+    //objective: { type: mongoose.Schema.Types.ObjectId, ref: 'Objective' },//th task which the evaluation is done
   },
   { timestamps: true },
 );

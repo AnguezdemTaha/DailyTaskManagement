@@ -7,6 +7,10 @@ const objectiveSchema = new mongoose.Schema(
       type: String,
       //required: true,
     },
+    objectiveText: {
+      type: String,
+      //required: true,
+    },
     start_date: {
       type: Date,
       //required: true,
@@ -15,22 +19,20 @@ const objectiveSchema = new mongoose.Schema(
       type: Date,
       //required: true,
     },
-    type: {
-      type: String,
-      //required: true,
-    },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },//associate task with user(one to many)
+    
+    //user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },//associate task with user(one to many)
     categorie: { type: mongoose.Schema.Types.ObjectId, ref: 'Categorie' },//associate task with domain(one to many)
+    //cas d'une seaul evaluation pour un objective
     evaluation: { type: mongoose.Schema.Types.ObjectId, ref: 'Evaluation' },
   },
   { timestamps: true },
 );
  
-<<<<<<< HEAD:Back_end(express_mongodb_api)/expressrestapi/models/objective.js
-const Objective = mongoose.model('objective', objectiveSchema);
-=======
+objectiveSchema.pre('remove', function(next) {
+  this.model('Evaluation').deleteMany({ objective: this._id }, next);
+});
+
 const Objective = mongoose.model('Objective', objectiveSchema);
->>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d:Back_end(express_mongodb_api)/expressrestapi/models/task.js
  
 export default Objective;
 

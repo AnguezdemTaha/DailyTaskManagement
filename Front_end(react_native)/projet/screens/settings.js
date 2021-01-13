@@ -4,16 +4,20 @@ import {View, Text,ImageBackground,TextInput,TouchableOpacity} from 'react-nativ
 //import { Card, Form, Col , Button} from 'react-bootstrap';
 import axios from 'axios';
 //const secondScreen=(props)=>{
-export default class secondScreen extends Component {
+export default class settings extends Component {
 
     initialState = {
-        username:'',
+        username:'', //normalement it's varibale current user username
         mail:'',
         password:'',
-        passwordc:'',
+
+        passwordold:'',
+        realpasswordold:'',
+        //passwordc:'',
         
         //otherattr:''
       }
+
     constructor(props) {
         super(props);
         this.state=this.initialState;
@@ -21,6 +25,24 @@ export default class secondScreen extends Component {
         this.submituser = this.submitUser.bind(this);
       }
     
+
+    componentDidMount() {
+        
+      //get
+        fetch('http://10.0.2.2:3000/users/user/getcurrentuser') //a modifier :  only categorie of specific user
+            .then((response) => response.json())
+            .then((responseData) => {
+          this.setState({
+            realpasswordold:responseData.pass,
+            username:responseData.username, //normalement it's varibale current user username
+            mail:responseData.mail,
+            });
+            })
+            .catch(err => console.error(err));
+        
+    }
+
+
     submitUser(event) {
         event.preventDefault();
         const user={
@@ -29,29 +51,25 @@ export default class secondScreen extends Component {
           mail:this.state.mail,
           //autre:this.state.autre
         }
-        if(this.state.password==this.state.passwordc){
-            axios.post("http://10.0.2.2:3000/users", user)
+        if(realpasswordold == passwordold){
+            axios.put("http://10.0.2.2:3000/users", user)
             .then(response => {
             if (response.data != null) {
-                //add if else
+                //add if else §§
                 this.setState(this.initialState);
                 alert("user enregistrée avec succès");
                 //ecrir dans l'ecrant
 
-                //alert("user deja existe");
+                //alert("user(informations) deja existe");
             }
             else{
                 this.setState(this.initialState);
-                //alert("user deja existe");
+                
                 //ecrir dans l'ecrant
             }
             })
         }
-        else{
-            alert("incorrect password");
-            this.props.navigation.navigate('thirdScreen');
-            //ecrir dans l'ecrant 
-        }
+       
       }
 
     //onPress={()=>this.props.navigation.navigate('thirdScreen')} : navigation to anohter screen
@@ -91,15 +109,16 @@ export default class secondScreen extends Component {
                     </View>
                     <View style={{flex:0.13,flexDirection:'row',justifyContent:'center'}}>
                         <View style={{flex:0.8}}>
-                        <TextInput fontStyle='italic' secureTextEntry={true} placeholder="Confirm password" name="passwordc" value = {this.state.passwordc} onChange = {this.userChange} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
+                        <TextInput fontStyle='italic' secureTextEntry={true} placeholder="Old Password" name="passwordold" value = {this.state.passwordold} onChange = {this.userChange} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
                         </View>
                     </View>
+                    
                  
                 </View>
                 <View style={{flex:0.2}}>
                     <View style={{flex:0.35,flexDirection:'row',justifyContent:'center'}}>
                         <TouchableOpacity onPress={this.submituser} style={{flex:0.3,backgroundColor:'orange',borderRadius:15,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{fontSize:25,color:'white'}}>Sign Up</Text>
+                            <Text style={{fontSize:25,color:'white'}}>Confirm</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

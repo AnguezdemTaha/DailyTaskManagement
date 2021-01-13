@@ -30,11 +30,7 @@ app.use(async (req, res, next) => {
 
 app.use('/session', routes.session);
 app.use('/users', routes.user);
-<<<<<<< HEAD
-app.use('/objectives', routes.objective);
-=======
 app.use('/objectifs', routes.objective);
->>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d
 app.use('/categories', routes.categorie);
 app.use('/evaluations', routes.evaluation);
 
@@ -69,6 +65,8 @@ connectDb().then(async () => {
     await Promise.all([
       models.User.deleteMany({}),
       models.Objective.deleteMany({}),
+      models.Categorie.deleteMany({}),
+      models.Evaluation.deleteMany({}),
     ]);
   }
 
@@ -81,6 +79,7 @@ app.listen(process.env.PORT, () =>
 
 
 const createUsersWithMessages = async () => {
+//users
   const user1 = new models.User({
     username: 'test',
     mail : 'test',
@@ -92,22 +91,58 @@ const createUsersWithMessages = async () => {
     mail : 'test2',
     password : 'test2',
   });
- 
-  const task1 = new models.Objective({
-    discription: 'task test1',
+
+//categories
+  const categirie1 = new models.Categorie({
+    discription: 'cat1',
+    categorieText: 'cat1 text',
     user: user1.id,
   });
- 
-  const task2 = new models.Objective({
-    discription: 'task test 2 ...',
+  const categirie2 = new models.Categorie({
+    discription: 'cat2',
+    categorieText: 'cat2 text',
     user: user2.id,
   });
- 
-  const task3 = new models.Objective({
-    discription: 'task test 3 ...',
-    user: user2.id,
+  const categirie3 = new models.Categorie({
+    discription: 'cat3',
+    categorieText: 'cat3 text',
+    user: user1.id,
   });
 
+//evaluatoins
+const ev1 = new models.Evaluation({
+  discription: 'ev1...',
+  note: 3,
+});
+const ev2 = new models.Evaluation({
+  discription: 'ev2 ...',
+  note: 5,
+});
+
+//objectifs
+const task1 = new models.Objective({
+  discription: 'task test1',
+  objectiveText: 'obj1',
+  //user: user1.id,
+  categorie: categirie1.id,
+  evaluation: ev1.id,
+});
+
+const task2 = new models.Objective({
+  discription: 'task test 2 ...',
+  objectiveText: 'obj2',
+  //user: user1.id,
+  categorie: categirie3.id,
+  evaluation: ev2.id,
+});
+
+const task3 = new models.Objective({
+  discription: 'task test 3 ...',
+  objectiveText: 'obj3',
+  //user: user2.id,
+  categorie: categirie2.id,
+  //evaluation: null,
+});
   //to do :
   /*const domain = new models.Task({
     discription: 'Published a complete ...',
@@ -129,10 +164,19 @@ const createUsersWithMessages = async () => {
     user: user2.id,
   });*/
  
+  await user1.save();
+  await user2.save();
+
+  await categirie1.save();
+  await categirie2.save();
+  await categirie3.save();
+
+  await ev1.save();
+  await ev2.save();
+
   await task1.save();
   await task2.save();
   await task3.save();
  
-  await user1.save();
-  await user2.save();
+  
 };
