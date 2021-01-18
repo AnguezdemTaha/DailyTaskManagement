@@ -6,8 +6,12 @@ import firstScreen from "../screens/firstScreen";
 import secondScreen from "../screens/secondScreen";
 import thirdScreen from "../screens/thirdScreen";
 import fourthScreen from '../screens/fourthScreen';
+<<<<<<< HEAD
 import settings from '../screens/settings';
 import userSettings from '../screens/userSettings';
+=======
+import settings from "../screens/settings";
+>>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
 const myStack=createStackNavigator();
 const AppNavigator=props=>{
     return <NavigationContainer>
