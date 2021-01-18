@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextInput } from 'react-native-gesture-handler';
 import DatePicker from 'react-native-date-picker';
 import { Rating, AirbnbRating } from 'react-native-ratings';
-<<<<<<< HEAD
 const fourthScreen=props=>{
     const domainIdd=props.route.params.domainId;
     const [modalOpen, setModalOpen] = useState(false);
@@ -17,66 +16,6 @@ const fourthScreen=props=>{
     const renderItem=(itemData)=>{
         return(
             <TouchableOpacity onPress={ ()=>{setMoodalOpen(true),setTit(itemData.item.title)}} style={{height:50,justifyContent:'center',alignItems:'center',marginBottom:15,backgroundColor:'#666699',borderRadius:15}}>
-=======
-
-export default class fourthScreen extends Component {
-
-
-    initialState = {
-        modalOpen: false,
-        moodalOpen: false,
-        date: new Date(),
-        
-        objectifs: [{"id":"x4","discription":"test","objectiveText":"testobj"}],
-        
-        //otherattr:''
-      }
-    constructor(props) {
-        super(props);
-        this.state=this.initialState;
-        
-      }
-    
-      
-      
-      
-    
-    componentDidMount() {
-        console.log("we are here");
-        this.setState({objectifs: [{"id":"x4","discription":"test","objectiveText":"testobj"}],
-                      });
-      //get
-      const domainIdd=this.props.route.params.domainId;
-        fetch('http://10.0.2.2:3000/objectifs/categorie/'+domainIdd) //a modifier :  only categorie of specific user
-            .then((response) => response.json())
-            .then((responseData) => {
-          console.log("we are here");
-          console.log(responseData);
-          this.setState({
-            
-            objectifs: responseData  //c'est le vri
-            //categories: [{"id":"x4","image":sports,"title":"testcategories"}]
-            
-                });
-            })
-            .catch(err => console.error(err));
-      }
-
-  render() {
-    const domainIdd=this.props.route.params.domainId;
-
-
-    
-    //const [modalOpen, setModalOpen] = useState(false);
-    //const [moodalOpen, setMoodalOpen] = useState(false);
-    const displayedGoals=Goals;
-    //const [date, setDate] = useState(new Date());
-    const renderItem=(itemData)=>{
-        return(
-            <TouchableOpacity onPress={()=>this.setState({moodalOpen: true})} style={{height:50,justifyContent:'center',marginBottom:15,backgroundColor:'#666699',borderRadius:15}}>
-                
-                <Text style={{marginLeft:10,color:'white'}}>{itemData.item.objectiveText}</Text>
->>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
                 
                 <Text style={{marginLeft:10,color:'white',fontSize:18}}>{itemData.item.title}</Text>
                 <TouchableOpacity><Icon name="trash"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
@@ -121,15 +60,9 @@ export default class fourthScreen extends Component {
                      <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25}}>Your goal is</Text></View>
                      <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25,color:'orange'}}>{tit}</Text></View>
                      <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25}}>It starts on</Text></View>
-<<<<<<< HEAD
                      <View style={{flex:0.33,alignItems:'center'}}><DatePicker
       date={date}
       onDateChange={setDate}
-=======
-                     <View style={{flex:0.27,alignItems:'center'}}><DatePicker
-      date={this.state.date}
-      //onDateChange={this.setState({date})}
->>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
       fadeToColor='#fcce58'
       androidVariant='nativeAndroid'
     /></View>

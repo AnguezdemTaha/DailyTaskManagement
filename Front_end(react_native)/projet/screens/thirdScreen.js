@@ -23,18 +23,8 @@ const thirdScreen=props=>{
             </View>           
           </View>
           </ImageBackground>
-<<<<<<< HEAD
          
           </TouchableOpacity>
-=======
-          <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'center'}}>
-                     <Icon name="trash-o info-circle"  size={30} style={{alignItems:'center'}} color="orange"/>
-          </View>
-          <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'center'}}>
-                     <Icon name="trash-o info-circle"  size={30} style={{alignItems:'center'}} color="orange"/>
-          </View>
-          </TouchableOpacity>;
->>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
           
          )
       };
@@ -63,15 +53,8 @@ const thirdScreen=props=>{
                  <View style={{flex:0.7,justifyContent:'center'}}>
                    <View style={{flex:0.7,flexDirection:'row',justifyContent:'flex-end'}}>
                      <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'flex-end'}}>
-<<<<<<< HEAD
                      <TouchableOpacity onPress={()=>props.navigation.navigate("userSettings")} ><Icon name="cog"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
                      
-=======
-                      <Icon name="user-circle" size={30} style={{alignItems:'center',marginLeft:-10}} color="orange"/>
-                     </View>
-                     <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'flex-end'}}>
-                     <Icon name="cog" onPress={()=>props.navigation.navigate("settings")} size={30} style={{alignItems:'center',marginRight:10}} color="orange"/>
->>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
                      </View>
                      <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'center'}}>
                      <TouchableOpacity><Icon name="sign-out"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>

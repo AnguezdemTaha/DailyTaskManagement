@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-
-
-import React, { Component } from 'react';
->>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
 import React from 'react';
 
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
@@ -129,16 +123,12 @@ userChange(event) {
               
               
               </View>
-<<<<<<< HEAD
               <View style={{justifyContent:'center',flexDirection:'row'}}>
                 <TouchableOpacity onPress={()=>props.navigation.navigate('secondScreen')} style={{flex:0.2,marginTop:5,alignItems:"center",backgroundColor:'white',borderRadius:15}} ><Text style={{color:'orange',fontSize:15}}>Sign up</Text></TouchableOpacity>
                 
               </View>
               <View style={{alignItems:'center'}}>
                 <TouchableOpacity><Text style={{color:'white',fontSize:15}}>Password Forgotten?</Text></TouchableOpacity></View>
-=======
-              <TouchableOpacity onPress={()=>this.props.navigation.navigate('secondScreen')} style={{alignItems:'center'}}><Text style={{color:'white',fontSize:15}}>Sign up</Text></TouchableOpacity>
->>>>>>> b7bdc9e28bfa1dfa44012bf110422dfa359daf04
               </View>
         </View>
       </ImageBackground>
