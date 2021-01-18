@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> ee162f44ae568cd32c829666c109f098c1ca5a5d
 import React from 'react';
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
 
@@ -36,8 +32,8 @@ const firstScreen=props=>{
               
               
           </KeyboardAvoidingView>
-          <View style={{flex:0.18,justifyContent:'space-between'}}>
-            <View style={{flex:0.9,flexDirection:'row',justifyContent:'center'}}>
+          <View style={{flex:0.2,justifyContent:'space-between'}}>
+            <View style={{flex:1,flexDirection:'row',justifyContent:'center'}}>
               
             <TouchableOpacity  onPress={()=>props.navigation.navigate('thirdScreen')}style={{flex:0.3,borderRadius:20,backgroundColor:'orange',justifyContent:'center',alignItems:'center'}}>
             <KeyboardAvoidingView>
@@ -48,7 +44,12 @@ const firstScreen=props=>{
               
               
               </View>
-              <TouchableOpacity onPress={()=>props.navigation.navigate('secondScreen')} style={{alignItems:'center'}}><Text style={{color:'white',fontSize:15}}>Sign up</Text></TouchableOpacity>
+              <View style={{justifyContent:'center',flexDirection:'row'}}>
+                <TouchableOpacity onPress={()=>props.navigation.navigate('secondScreen')} style={{flex:0.2,marginTop:5,alignItems:"center",backgroundColor:'white',borderRadius:15}} ><Text style={{color:'orange',fontSize:15}}>Sign up</Text></TouchableOpacity>
+                
+              </View>
+              <View style={{alignItems:'center'}}>
+                <TouchableOpacity><Text style={{color:'white',fontSize:15}}>Password Forgotten?</Text></TouchableOpacity></View>
               </View>
         </View>
       </ImageBackground>

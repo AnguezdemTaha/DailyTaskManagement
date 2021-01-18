@@ -9,12 +9,24 @@ const thirdScreen=props=>{
       const renderItem = ( itemData ) => {
     
     
-        return <TouchableOpacity onPress={()=>props.navigation.navigate('fourthScreen',{imagee:itemData.item.image,domainId:itemData.item.id})} style={{flex:1,margin:15,height:160,borderRadius:40,overflow:'hidden'}}>
+        return(
+        
+          <TouchableOpacity onPress={()=>props.navigation.navigate('fourthScreen',{imagee:itemData.item.image,domainId:itemData.item.id})} style={{flex:0.9,margin:15,height:160,borderRadius:40,overflow:'hidden'}}>
           <ImageBackground source={itemData.item.image} style={{height:'100%',width:'100%',justifyContent:'flex-end',alignItems:'center'}}>
-          <Text style={{color:'white',fontSize:30,textAlign:'center'}}>{itemData.item.title}</Text>
-          </ImageBackground>
-          </TouchableOpacity>;
+          <Text style={{color:'white',fontSize:26,textAlign:'center'}}>{itemData.item.title}</Text>
           
+          <View style={{flex:0.25,flexDirection:'row'}}>
+          <View style={{flex:0.45,flexDirection:'row',justifyContent:'space-around'}}>
+          <TouchableOpacity onPress={()=>props.navigation.navigate("settings",{tittle:itemData.item.title})}><Icon name="cog"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
+          <TouchableOpacity><Icon name="trash"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
+            
+            </View>           
+          </View>
+          </ImageBackground>
+         
+          </TouchableOpacity>
+          
+         )
       };
 
     return(
@@ -41,10 +53,11 @@ const thirdScreen=props=>{
                  <View style={{flex:0.7,justifyContent:'center'}}>
                    <View style={{flex:0.7,flexDirection:'row',justifyContent:'flex-end'}}>
                      <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'flex-end'}}>
-                     <Icon name="cog" onPress={()=>props.navigation.navigate("settings")} size={30} style={{alignItems:'center',marginRight:10}} color="orange"/>
+                     <TouchableOpacity onPress={()=>props.navigation.navigate("userSettings")} ><Icon name="cog"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
+                     
                      </View>
                      <View style={{flex:0.1,justifyContent:'flex-end',alignItems:'center'}}>
-                     <Icon name="sign-out"  size={30} style={{alignItems:'center'}} color="orange"/>
+                     <TouchableOpacity><Icon name="sign-out"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
                      </View>
                    </View>
                  </View>

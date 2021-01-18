@@ -8,15 +8,16 @@ import { Rating, AirbnbRating } from 'react-native-ratings';
 const fourthScreen=props=>{
     const domainIdd=props.route.params.domainId;
     const [modalOpen, setModalOpen] = useState(false);
+    const [tit,setTit] =useState(null);
     const [moodalOpen, setMoodalOpen] = useState(false);
     const displayedGoals=Goals.filter(goal=>goal.domainId.indexOf(domainIdd)>=0);
     const [date, setDate] = useState(new Date());
     const renderItem=(itemData)=>{
         return(
-            <TouchableOpacity onPress={ ()=>setMoodalOpen(true)} style={{height:50,justifyContent:'center',marginBottom:15,backgroundColor:'#666699',borderRadius:15}}>
+            <TouchableOpacity onPress={ ()=>{setMoodalOpen(true),setTit(itemData.item.title)}} style={{height:50,justifyContent:'center',alignItems:'center',marginBottom:15,backgroundColor:'#666699',borderRadius:15}}>
                 
-                <Text style={{marginLeft:10,color:'white'}}>{itemData.item.title}</Text>
-                
+                <Text style={{marginLeft:10,color:'white',fontSize:18}}>{itemData.item.title}</Text>
+                <TouchableOpacity><Icon name="trash"  size={30} style={{alignItems:'center'}} color="orange"/></TouchableOpacity>
                 </TouchableOpacity>
             
         )
@@ -55,20 +56,32 @@ const fourthScreen=props=>{
              <View style={{flex:1,justifyContent:'center'}}>
                  <View style={{flex:0.9,backgroundColor:'#99ccff',borderRadius:25}}>
                      <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25}}>Your goal is</Text></View>
-                     <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25,color:'orange'}}>Goal</Text></View>
+                     <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25,color:'orange'}}>{tit}</Text></View>
                      <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25}}>It starts on</Text></View>
-                     <View style={{flex:0.27,alignItems:'center'}}><DatePicker
+                     <View style={{flex:0.33,alignItems:'center'}}><DatePicker
       date={date}
       onDateChange={setDate}
       fadeToColor='#fcce58'
       androidVariant='nativeAndroid'
     /></View>
                     <View style={{flex:0.1,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:25}}>Description</Text></View>
-                    <View style={{flex:0.25,flexDirection:'row',justifyContent:'center'}}><Text style={{fontSize:18}}>Workout for 1 hour, run, take a shower</Text></View>
+                    <View style={{flex:0.2,flexDirection:'row',justifyContent:'center'}}><Text style={{fontSize:18}}>Workout for 1 hour, run, take a shower</Text></View>
                     <AirbnbRating
                     starContainerStyle={{backgroundColor:'white',borderRadius:20}}
                     selectedColor='red'
                     reviewColor='red'
+                    isDisabled='true'
+                    
+  count={5}
+  reviews={["Terrible",  "OK", "Good", "Very Good",  "Excellent"]}
+  defaultRating={2}
+  size={30}
+/>
+<AirbnbRating
+                    starContainerStyle={{backgroundColor:'white',borderRadius:20}}
+                    selectedColor='red'
+                    reviewColor='red'
+                    
   count={5}
   reviews={["Terrible",  "OK", "Good", "Very Good",  "Excellent"]}
   defaultRating={5}
