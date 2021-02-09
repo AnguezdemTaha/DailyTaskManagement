@@ -23,7 +23,7 @@ app.use(async (req, res, next) => {
   req.context = {
     models,
     //me: models.users[1],..
-    me: await models.User.findByLogin('test','test'),
+    me: await models.User.findByLogin('zakaria@gmail.com','zakaria'),
   };
   next();
 });
@@ -81,66 +81,80 @@ app.listen(process.env.PORT, () =>
 const createUsersWithMessages = async () => {
 //users
   const user1 = new models.User({
-    username: 'test',
-    mail : 'test',
-    password : 'test',
+    username: 'zakaria',
+    mail : 'zakaria@gmail.com',
+    password : 'zakaria',
   });
  
   const user2 = new models.User({
-    username: 'test2',
-    mail : 'test2',
-    password : 'test2',
+    username: 'taha',
+    mail : 'taha@gmail.com',
+    password : 'taha',
   });
 
 //categories
   const categirie1 = new models.Categorie({
-    discription: 'cat1',
-    categorieText: 'cat1 text',
+    discription: 'une categorie de sport ...',
+    categorieText: 'sports',
     user: user1.id,
   });
   const categirie2 = new models.Categorie({
-    discription: 'cat2',
-    categorieText: 'cat2 text',
+    discription: 'une categorie detudes ...',
+    categorieText: 'studies',
     user: user2.id,
   });
   const categirie3 = new models.Categorie({
-    discription: 'cat3',
-    categorieText: 'cat3 text',
+    discription: 'une categorie de la famille ...',
+    categorieText: 'family',
     user: user1.id,
   });
 
 //evaluatoins
 const ev1 = new models.Evaluation({
-  discription: 'ev1...',
-  note: 3,
+  discription: 'objective réalise avec succé mais avec moin de concentration',
+  note: 4,
 });
 const ev2 = new models.Evaluation({
-  discription: 'ev2 ...',
+  discription: 'perfect realisation',
   note: 5,
 });
 
 //objectifs
 const task1 = new models.Objective({
-  discription: 'task test1',
-  objectiveText: 'obj1',
+  discription: '10km course dans 1h',
+  objectiveText: '1h sport',
   //user: user1.id,
+//  end_date:Date.now(),
+end_date:Date.parse('28 Jan 2021 00:00 GMT'),
+
   categorie: categirie1.id,
   evaluation: ev1.id,
 });
 
 const task2 = new models.Objective({
-  discription: 'task test 2 ...',
-  objectiveText: 'obj2',
+  discription: '2h de marche soit seul soit avec les amis ...',
+  objectiveText: '2h marche',
   //user: user1.id,
+  end_date:Date.parse('29 Jan 2021 00:00 GMT'),
   categorie: categirie3.id,
   evaluation: ev2.id,
 });
 
 const task3 = new models.Objective({
-  discription: 'task test 3 ...',
-  objectiveText: 'obj3',
+  discription: 'objective de test',
+  objectiveText: 'test',
   //user: user2.id,
+  end_date:Date.parse('30 Jan 2021 00:00 GMT'),
   categorie: categirie2.id,
+  //evaluation: null,
+});
+
+const task4 = new models.Objective({
+  discription: 'objective de test',
+  objectiveText: 'test2',
+  //user: user2.id,
+  end_date:Date.parse('8 Feb 2021 6:50 GMT'),
+  categorie: categirie1.id,
   //evaluation: null,
 });
   //to do :
@@ -177,6 +191,7 @@ const task3 = new models.Objective({
   await task1.save();
   await task2.save();
   await task3.save();
+  //await task4.save();
  
   
 };

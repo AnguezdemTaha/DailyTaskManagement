@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {View,Text,ImageBackground,Button,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
 
@@ -8,9 +8,9 @@ export default class firstScreen extends Component {
 
   initialState = {
     username:'',
-    
+    //mail:'',
     password:'',
-    
+    //passwordc:'',
     
     //otherattr:''
   }
@@ -33,11 +33,12 @@ submitUser(event) {
       //autre:this.state.autre
     }
     
-        axios.post("http://10.0.2.2:3002/users/login", user)
+        axios.post("http://10.0.2.2:3000/users/login", user)
         .then(response => {
           console.log("tets"+response.data);
-        if (response.data != null) {
+        if (response.data._id != null) {
           //to add a if else (if the data user null or not)
+            console.log("tets"+response.data._id);
             this.setState(this.initialState);
             alert("succé");
             //ecrir dans l'ecrant
@@ -46,7 +47,7 @@ submitUser(event) {
         }
         else{
             this.setState(this.initialState);
-            
+            alert("informations incorrectes");
             //ecrir dans l'ecrant
         }
         })
@@ -78,10 +79,11 @@ submitUser(event) {
 //onPress={()=>this.props.navigation.navigate('thirdScreen')} : navigation to anohter screen
 
 userChange(event) {
-    this.setState (
-      { [event.target.name]:event.target.value }
-    ) ;
-  }
+  console.log(".......... :"+event.target.getAttribute('name'));
+  this.setState (
+    { [event.target.name]:event.target.value }
+  ) ;
+}
     
   render() {
     return (
@@ -101,11 +103,11 @@ userChange(event) {
               <KeyboardAvoidingView style={{flex:0.55,justifyContent:'space-around'}}>
             <View style={{flex:0.48,flexDirection:'row',justifyContent:"center"}}>
                 
-                <KeyboardAvoidingView style={{flex:0.7}}><TextInput placeholder="Username" name="username" value = {this.state.username} onChange = {this.userChange} placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5 ,borderBottomColor:"orange",color:"white",fontSize:15}} /></KeyboardAvoidingView>
+                <KeyboardAvoidingView style={{flex:0.7}}><TextInput placeholder="Username" name="username" value = {this.state.username} onChangeText={(username) => this.setState({username})} placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5 ,borderBottomColor:"orange",color:"white",fontSize:15}} /></KeyboardAvoidingView>
             </View>
             <View style={{flex:0.48,flexDirection:'row',justifyContent:"center"}}>
                 
-                <KeyboardAvoidingView style={{flex:0.7}}><TextInput secureTextEntry={true} placeholder="Password" name="password" value = {this.state.password} onChange = {this.userChange} placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5,borderBottomColor:'orange',color:"white",fontSize:15}} /></KeyboardAvoidingView>
+                <KeyboardAvoidingView style={{flex:0.7}}><TextInput secureTextEntry={true} placeholder="Password" name="password" value = {this.state.password} onChangeText={(password) => this.setState({password})} placeholderTextColor="gray" style={{flex:1,borderBottomWidth:1.5,borderBottomColor:'orange',color:"white",fontSize:15}} /></KeyboardAvoidingView>
             </View>
           </KeyboardAvoidingView>
               
@@ -124,7 +126,7 @@ userChange(event) {
               
               </View>
               <View style={{justifyContent:'center',flexDirection:'row'}}>
-                <TouchableOpacity onPress={()=>props.navigation.navigate('secondScreen')} style={{flex:0.2,marginTop:5,alignItems:"center",backgroundColor:'white',borderRadius:15}} ><Text style={{color:'orange',fontSize:15}}>Sign up</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('secondScreen')} style={{flex:0.2,marginTop:5,alignItems:"center",backgroundColor:'white',borderRadius:15}} ><Text style={{color:'orange',fontSize:15}}>Sign up</Text></TouchableOpacity>
                 
               </View>
               <View style={{alignItems:'center'}}>

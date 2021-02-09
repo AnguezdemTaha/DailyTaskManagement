@@ -32,7 +32,7 @@ export default class secondScreen extends Component {
         if(this.state.password==this.state.passwordc){
             axios.post("http://10.0.2.2:3000/users", user)
             .then(response => {
-            if (response.data != null) {
+            if (response.data._id != null) {
                 //add if else
                 this.setState(this.initialState);
                 alert("user enregistrée avec succès");
@@ -69,29 +69,25 @@ export default class secondScreen extends Component {
             <ImageBackground source={require('../assets/img.jpg')} style={{width:'100%',height:'100%',justifyContent:'center'}}>
                 <View style={{flex:0.6,justifyContent:'space-around'}}>
                   
+                    
                     <View style={{flex:0.13,flexDirection:'row',justifyContent:'center'}}>
                         <View style={{flex:0.8}}>
-                            <TextInput  fontStyle='italic' placeholder="Full Name" placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
+                        <TextInput fontStyle='italic' placeholder="Username" name="username" value = {this.state.username} onChangeText={(username) => this.setState({username})} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
                         </View>
                     </View>
                     <View style={{flex:0.13,flexDirection:'row',justifyContent:'center'}}>
                         <View style={{flex:0.8}}>
-                        <TextInput fontStyle='italic' placeholder="Username" name="username" value = {this.state.username} onChange = {this.userChange} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
+                        <TextInput fontStyle='italic' placeholder="Email" name="mail" value = {this.state.mail} onChangeText={(mail) => this.setState({mail})} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
                         </View>
                     </View>
                     <View style={{flex:0.13,flexDirection:'row',justifyContent:'center'}}>
                         <View style={{flex:0.8}}>
-                        <TextInput fontStyle='italic' placeholder="Email" name="mail" value = {this.state.mail} onChange = {this.userChange} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
+                        <TextInput fontStyle='italic' secureTextEntry={true} placeholder="Password" name="password" value = {this.state.password} onChangeText={(password) => this.setState({password})} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
                         </View>
                     </View>
                     <View style={{flex:0.13,flexDirection:'row',justifyContent:'center'}}>
                         <View style={{flex:0.8}}>
-                        <TextInput fontStyle='italic' secureTextEntry={true} placeholder="Password" name="password" value = {this.state.password} onChange = {this.userChange} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
-                        </View>
-                    </View>
-                    <View style={{flex:0.13,flexDirection:'row',justifyContent:'center'}}>
-                        <View style={{flex:0.8}}>
-                        <TextInput fontStyle='italic' secureTextEntry={true} placeholder="Confirm password" name="passwordc" value = {this.state.passwordc} onChange = {this.userChange} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
+                        <TextInput fontStyle='italic' secureTextEntry={true} placeholder="Confirm password" name="passwordc" value = {this.state.passwordc} onChangeText={(passwordc) => this.setState({passwordc})} placeholderTextColor="orange" style={{borderBottomWidth:1,borderBottomColor:'white',color:'white'}}/>
                         </View>
                     </View>
                  

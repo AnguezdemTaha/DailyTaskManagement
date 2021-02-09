@@ -1,0 +1,6 @@
+projectKey=projet_mobile:objectifs
+serverUrl=http://localhost:9000
+serverVersion=8.6.0.39681
+dashboardUrl=http://localhost:9000/dashboard?id=projet_mobile%3Aobjectifs
+ceTaskId=AXd-sTDwTERcWBO7Wy9Y
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXd-sTDwTERcWBO7Wy9Y
